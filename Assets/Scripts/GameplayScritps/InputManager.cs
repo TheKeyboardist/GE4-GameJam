@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour
 
 
     private static InputManager _instance;
-
+    private Camera mainCamera;
 
     public static InputManager Instance
     {
@@ -16,6 +16,9 @@ public class InputManager : MonoBehaviour
             return _instance;
         }
     }
+
+
+
 
     private void Start()
     {
@@ -32,7 +35,23 @@ public class InputManager : MonoBehaviour
 
     private void EndedClick()
     {
-            
+        DetectObject();
+    }
+
+
+
+    private void DetectObject()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(cameraControls.Mouse.Position.ReadValue<Vector2>());
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit))
+        {
+            if(hit.collider != null)
+            {
+                Debug.Log("sdfs");
+                Destroy(hit.collider.gameObject);
+            }
+        }
     }
 
 
@@ -41,15 +60,16 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        if(_instance != null && _instance !=  this)
+        mainCamera = Camera.main;
+        if (_instance != null && _instance !=  this)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
         else
         {
             _instance = this;
         }
-
+     
         cameraControls = new CameraControl();
     }
 

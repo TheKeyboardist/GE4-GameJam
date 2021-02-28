@@ -20,6 +20,8 @@ public class CameraController : MonoBehaviour
     
     private void Start()
     {
+
+        
         controller = GetComponent<CameraController>();
         inputManager = InputManager.Instance;
     }
