@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7324383440560490791}
   - component: {fileID: 7324383440559524839}
   - component: {fileID: -2402738191979378345}
+  - component: {fileID: 7928608954769957628}
   m_Layer: 0
   m_Name: Treasure
   m_TagString: Untagged
@@ -100,3 +101,22 @@ MonoBehaviour:
   z: 0
   body: {fileID: 0}
   intensity: 0
+--- !u!95 &7928608954769957628
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7324383440561722663}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9debd8a49b1964f4cbcba68430cb8148, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -50,7 +50,7 @@ public class WorldGenerator : MonoBehaviour
                         if(treasureID == counter)
                         {
                             temp = Instantiate(treasurePrefab, new Vector3((x - (diameter / 2) + 0.5f), (y - (diameter / 2) + 0.5f), (z - (diameter / 2) + 0.5f)), Quaternion.identity);
-                            Debug.Log("treasure");
+                            
                         }
                         else
                         {
@@ -103,6 +103,8 @@ public class WorldGenerator : MonoBehaviour
         //         }
         //     }
         // }
+
+        Debug.Log("treasureID"+randInt);
         return randInt;
         
     }
@@ -119,8 +121,10 @@ public class WorldGenerator : MonoBehaviour
 
                     if(treasureID != grid[x,y,z].id)
                     {
-                        float distance = 3 / ((Mathf.Abs(grid[x, y, z].x) - Mathf.Abs(treasureLocation.x) + 0.0001f) + (Mathf.Abs(grid[x, y, z].y) - Mathf.Abs(treasureLocation.y) + 0.0001f) + ((Mathf.Abs(grid[x, y, z].z) - Mathf.Abs(treasureLocation.z)) + 0.0001f));
-                        grid[x, y, z].body.GetComponent<MeshRenderer>().material.color = new Color(distance*2, 1, 1);
+                        float distance = Mathf.Abs((Mathf.Abs(grid[x, y, z].x) - Mathf.Abs(treasureLocation.x) + 0.0001f) + (Mathf.Abs(grid[x, y, z].y) - Mathf.Abs(treasureLocation.y) + 0.0001f) + ((Mathf.Abs(grid[x, y, z].z) - Mathf.Abs(treasureLocation.z)) + 0.0001f));
+                        Debug.Log("distance " +     distance);
+                        grid[x, y, z].body.GetComponent<MeshRenderer>().material.color = new Color(distance/3, 1, 1);
+
                     }
 
                     
