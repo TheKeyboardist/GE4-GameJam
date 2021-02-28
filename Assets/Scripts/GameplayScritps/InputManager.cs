@@ -48,7 +48,7 @@ public class InputManager : MonoBehaviour
         {
             if(hit.collider != null)
             {
-                Debug.Log("sdfs");
+               
                 Destroy(hit.collider.gameObject);
             }
         }
