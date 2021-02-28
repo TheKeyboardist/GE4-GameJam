@@ -19,18 +19,6 @@ public class Tile : MonoBehaviour
     private CameraControl controls;
 
 
-    private void Start()
-    {
-   
-    }
-
-    private void Update()
-    {
-       
-
-     
-
-    }
 }
 
 

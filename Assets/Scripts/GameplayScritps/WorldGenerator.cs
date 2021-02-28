@@ -80,7 +80,7 @@ public class WorldGenerator : MonoBehaviour
 
     int PickRandLocation()
     {
-        //bool unFinished = true;
+        bool unFinished = true;
         int randInt = 0;
         randInt = Random.Range(diameter, diameter * diameter * diameter);
         // while (!unFinished)
@@ -92,17 +92,25 @@ public class WorldGenerator : MonoBehaviour
         //         {
         //             for (int z = 0; z < grid.GetLength(2); z++)
         //             {
-        //                 if(grid[x,y,z].id ==randInt)
-        //                 {
-        //                     if((x+1)%5 != 0 && (y + 1) % 5 != 0 && (z + 1) % 5 != 0)
-        //                     {
-        //                         unFinished = false;
-        //                     }
-        //                 }
+        //
         //             }
         //         }
         //     }
         // }
+
+        while(!unFinished)
+        {
+            randInt = Random.Range(diameter, diameter * diameter * diameter);
+            if (!((randInt + 1) % 5 == 0))
+            {
+                unFinished = false;
+            }
+
+
+        }
+
+
+
 
         Debug.Log("treasureID"+randInt);
         return randInt;

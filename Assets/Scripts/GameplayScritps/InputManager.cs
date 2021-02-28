@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class InputManager : MonoBehaviour
 {
+    public GameObject triesText;
+    private Text tries;
 
+
+    int numberOfTries = 5;
 
     private static InputManager _instance;
     private Camera mainCamera;
@@ -22,6 +27,8 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
+        tries = triesText.GetComponent<Text>();
+        tries.text = "Tries: " + numberOfTries;
         cameraControls.Mouse.Click.started += _ => StartedClick();
         cameraControls.Mouse.Click.performed += _ => EndedClick();
     }
@@ -48,8 +55,20 @@ public class InputManager : MonoBehaviour
         {
             if(hit.collider != null)
             {
+               if(hit.collider.gameObject.tag == "Treasure" && numberOfTries > 0)
+               {
+                    SceneManager.LoadScene("Win");
+               }
+               else if(numberOfTries > 0)
+               {
+                    Destroy(hit.collider.gameObject);
+                    numberOfTries--;
+                    if(numberOfTries == 0)
+                    {
+                        SceneManager.LoadScene("Lose");
+                    }
+                }
                
-                Destroy(hit.collider.gameObject);
             }
         }
     }
@@ -90,6 +109,9 @@ public class InputManager : MonoBehaviour
     }
 
 
-
+    private void Update()
+    {
+        tries.text = "Tries: " + numberOfTries;
+    }
 
 }
